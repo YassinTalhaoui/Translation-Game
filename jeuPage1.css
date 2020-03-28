@@ -32,7 +32,7 @@ header h3{
 div{
 
     text-align: center;
-    font-size: 50pt;
+    font-size: 45pt;
 }
 
 main {
@@ -40,9 +40,14 @@ main {
     grid-area: game;
 }
 
+footer b{
+
+    text-decoration: overline;
+}
+
 footer {
    
-    text-decoration: overline;
+   
     grid-area: footer;
 }
 

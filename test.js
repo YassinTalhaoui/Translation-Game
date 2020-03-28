@@ -1,3 +1,6 @@
+/**
+ * Prints quiz descriptions in the console
+ */
 function datas(){
  let i = 0;
   

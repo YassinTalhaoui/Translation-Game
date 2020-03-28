@@ -1,0 +1,41 @@
+body{
+    display: grid;
+    grid-template-rows: 40% 55% 5%;
+    grid-template-areas:    "header"
+                            "game"
+                            "footer";
+
+}
+
+html, body{width:100%;height:100%;}
+
+
+header {
+
+    grid-area: header;
+    text-align: center;
+    background-color: rgb(9, 45, 160);
+    color: white;
+    font-size: 28pt;
+}
+
+header h1{
+
+    margin-bottom: 1px;
+}
+
+header h3{
+
+    margin-top: 1px;
+}
+
+div{
+
+    text-align: center;
+    font-size: 45pt;
+}
+
+main {
+    
+    grid-area: game;
+}
