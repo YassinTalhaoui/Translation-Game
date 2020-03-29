@@ -1,9 +1,9 @@
 body{
     display: grid;
-    grid-template-rows: 40% 55% 5%;
+    grid-template-rows: 35% 65% ;
     grid-template-areas:    "header"
                             "game"
-                            "footer";
+                           /* "footer"*/;
 
 }
 
@@ -21,12 +21,14 @@ header {
 
 header h1{
 
-    margin-bottom: 1px;
+   margin-bottom: 1px;
+   /*margin-top: 1px;*/
+
 }
 
 header h3{
 
-    margin-top: 1px;
+    margin-top: 2px;
 }
 
 div{
@@ -38,4 +40,12 @@ div{
 main {
     
     grid-area: game;
+}
+
+button{
+    
+    width: 130px;
+    height: 30px;
+    color: white;
+    background-color: rgb(9, 45, 160);
 }

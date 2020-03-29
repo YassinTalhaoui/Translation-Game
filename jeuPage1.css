@@ -1,6 +1,6 @@
 body{
     display: grid;
-    grid-template-rows: 40% 55% 5%;
+    grid-template-rows: 35% 60% 5%;
     grid-template-areas:    "header"
                             "game"
                             "footer";
@@ -47,11 +47,11 @@ footer b{
 
 footer {
    
-   
     grid-area: footer;
 }
 
 form button{
+    
     background-color:rgb(9, 45, 160);
     color: white;
 }
