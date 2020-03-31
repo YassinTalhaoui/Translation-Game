@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="jeuPage2.css">
+    <link rel="stylesheet" href="../Css/jeu.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="data.js"></script>
-    <script src="jeuPage2.js"></script>
+    <script src="../Script/data.js"></script>
+    <script src="../Script/jeu.js"></script>
     <title>Document</title>
 </head>
 
@@ -18,32 +18,32 @@
     </header>
 
     <main>
-        <div id="DIV"></div>
+        <div id="Description"></div>
 
-        <form name="for">
+        <form>
             <h3 id=number></h3>
             <h2 id="question"></h2>
             <div id="zone"></div>
-           
-          
-             <b>
-                    Cliquez sur un mot pour le placer dans la réponse (à la suite).
-                    Cliquez sur un mot de la réponse pour l' enlever.
-                </b> 
-         
-                       
+
+            <b>
+                Cliquez sur un mot pour le placer dans la réponse (à la suite).
+                Cliquez sur un mot de la réponse pour l' enlever.
+            </b>
+
         </form>
-        <div  id="d"> 
-            <button id="dis"></button>
+        <div id="buttons">
+
         </div>
+        <br>
         <button>Verifier</button>
     </main>
- 
+
     <script>
         getId();
         getDescription();
         askQuestion();
         btn();
+       // shuffle(array);
     </script>
 </body>
 

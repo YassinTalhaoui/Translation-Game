@@ -20,7 +20,7 @@ function getDescription() {
     while (i < data.length) {
         if (nom == data[i].id) {
             description = data[i].description;
-            $("#DIV").text("Quiz sur le théme :" + description)
+            $("#Description").text("Quiz sur le théme :" + description)
         }
         i++;
 
@@ -51,7 +51,7 @@ function askQuestion() {
  * displays the different buttons 
  * with the different words to place.
  */
-function btn(){
+function btn() {
     let extras;
     let answer;
     let nom = new
@@ -61,25 +61,35 @@ function btn(){
         if (nom == data[i].id) {
             answer = data[i].questions[0].answer;
             extras = data[i].questions[0].extras;
-            let k=0;
+            let k = 0;
             let j = 0;
-                for(j;j<answer.split(" ").length;j++){
-                    var btn = document.createElement("BUTTON");        // Créer un élément <button>
-                    var t = document.createTextNode(answer.split(" ")[j]);        // Créer un noeud textuel
-                    btn.appendChild(t);                                // Ajouter le texte au bouton
-                    document.body.appendChild(btn); 
+            for (j; j < answer.split(" ").length; j++) {
+                var btn = document.createElement("BUTTON");        // Créer un élément <button>
+                var t = document.createTextNode(answer.split(" ")[j]);        // Créer un noeud textuel
+                btn.appendChild(t);                                // Ajouter le texte au bouton
+                document.getElementById("buttons").appendChild(btn);
             }
-            for(k;k<extras.split(" ").length;k++){
+            for (k; k < extras.split(" ").length; k++) {
                 var btn = document.createElement("BUTTON");        // Créer un élément <button>
                 var t = document.createTextNode(extras.split(" ")[k]);        // Créer un noeud textuel
                 btn.appendChild(t);                                // Ajouter le texte au bouton
-                document.body.appendChild(btn); 
-              
-                
-              
+                document.getElementById("buttons").appendChild(btn);
+            }
         }
-    }
         i++;
-}
+    }
 }
 
+/**
+ * Shuffle the animal.
+ * @param {*[]} array .
+ */
+/*function shuffle(array) {
+    array = data[i].questions[0].answer;
+   let counter = array.length
+   while(counter>0){
+       let index = Math.floor(Math.random()*counter);
+       counter--;
+       [array[counter], array[index]] = [array[counter], array[index]];
+   }
+}*/
