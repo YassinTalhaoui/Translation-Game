@@ -1,7 +1,7 @@
 /**
  * Fills the form list dynamically.
  */
-function description() {
+function chosenQuiz() {
     document.monFormulaire.quizId.options.length = data.length;
     for (var i = 0; i < data.length; i++) {
 
@@ -19,6 +19,7 @@ function description() {
 
     }
 }
+
 
 
 

@@ -20,23 +20,30 @@
     <main>
         <div id="DIV"></div>
 
-        <form>
-            <h3>Question:</h3>
-            <textarea id="h" rows="10" cols="165"></textarea>
-            <p> <b>
+        <form name="for">
+            <h3 id=number></h3>
+            <h2 id="question"></h2>
+            <div id="zone"></div>
+           
+          
+             <b>
                     Cliquez sur un mot pour le placer dans la réponse (à la suite).
                     Cliquez sur un mot de la réponse pour l' enlever.
-                    <b></p>
-
-            <button>Verifier</button>
+                </b> 
+         
+                       
         </form>
-
+        <div  id="d"> 
+            <button id="dis"></button>
+        </div>
+        <button>Verifier</button>
     </main>
-
+ 
     <script>
         getId();
         getDescription();
-
+        askQuestion();
+        btn();
     </script>
 </body>
 
