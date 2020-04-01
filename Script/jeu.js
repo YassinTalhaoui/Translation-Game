@@ -66,30 +66,73 @@ function btn() {
             for (j; j < answer.split(" ").length; j++) {
                 var btn = document.createElement("BUTTON");        // Créer un élément <button>
                 var t = document.createTextNode(answer.split(" ")[j]);        // Créer un noeud textuel
-                btn.appendChild(t);                                // Ajouter le texte au bouton
+                btn.appendChild(t);
+                btn.className = "btn";                             // Ajouter le texte au bouton
+                btn.type = "button";
                 document.getElementById("buttons").appendChild(btn);
             }
             for (k; k < extras.split(" ").length; k++) {
                 var btn = document.createElement("BUTTON");        // Créer un élément <button>
                 var t = document.createTextNode(extras.split(" ")[k]);        // Créer un noeud textuel
-                btn.appendChild(t);                                // Ajouter le texte au bouton
+                btn.appendChild(t);
+                btn.className = "btn";                                // Ajouter le texte au bouton
+                btn.type = "button";
                 document.getElementById("buttons").appendChild(btn);
+
             }
         }
         i++;
     }
 }
 
+
+
 /**
- * Shuffle the animal.
- * @param {*[]} array .
+ * allows you to move the clicked button in or 
+ * out of the solution to remove it from the solution.
  */
+
+function moveToAnswer() {
+
+    $(document).ready(function () {
+        $(".btn").click(function () {
+            console.log(this);
+            $(this).appendTo("#zone");
+            $(this).off("click");
+
+        });
+
+    });
+
+
+}
+/**
+ * 
+ */
+function moveToSt() {
+
+    $(".btn").click(function () {
+        $(this).appendTo("#buttons");
+
+    });
+
+
+}
+
 /*function shuffle(array) {
-    array = data[i].questions[0].answer;
-   let counter = array.length
-   while(counter>0){
-       let index = Math.floor(Math.random()*counter);
-       counter--;
-       [array[counter], array[index]] = [array[counter], array[index]];
-   }
+let i =0;
+    while (i < data.length) {
+
+        //array = data[0].questions[i].answer.split(" ");
+     let counter = array.length;
+     while (counter > 0) {
+     let index = Math.floor(Math.random() * counter);
+     counter--;
+     // Swap positions counter and index in the array.
+     [array[counter], array[index]] = [array[index], array[counter]];
+     }
+
+
+i++;
+}
 }*/
