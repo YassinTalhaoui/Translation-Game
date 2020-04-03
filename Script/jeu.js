@@ -27,6 +27,7 @@ function getDescription() {
     }
 }
 
+var nbQuest = 1;
 /**
  * Asks the question 
  */
@@ -38,37 +39,37 @@ function askQuestion() {
     while (i < data.length) {
         if (nom == data[i].id /*&& description == data[i].description*/) {
 
-            question = data[i].questions[0].question;
+            question = data[i].questions[nbQuest - 1].question;
             console.log(data[i].questions.length)
             $("#question").text(question);
         }
-        if (i == 1) {
-            $("#number").text("Question " + i);
-        }
+        // if (i == 1) {
+        $("#number").text("Question " + nbQuest);
+        // }
         i++;
     }
+
 }
 
-//var answer;
+
 
 /**
  * displays the different buttons 
  * with the different words to place.
  */
 function btn() {
-    let extras;
-    let answer;
     let nom = new
         URL(location.href).searchParams.get("quizId");
     let i = 0;
     while (i < data.length) {
         if (nom == data[i].id) {
-            answer = data[i].questions[0].answer;
-            extras = data[i].questions[0].extras;
             let k = 0;
             let j = 0;
+            answer = data[i].questions[j].answer;
+            extras = data[i].questions[k].extras;
+            // let k = 0;
+            // let j = 0;
             for (j; j < answer.split(" ").length; j++) {
-                console.log(shuffle(answer.split(" ")[j]));
                 var btn = document.createElement("BUTTON");        // Créer un élément <button>
                 var t = document.createTextNode(answer.split(" ")[j]);        // Créer un noeud textuel
                 btn.appendChild(t);
@@ -77,25 +78,24 @@ function btn() {
                 document.getElementById("buttons").appendChild(btn);
             }
             for (k; k < extras.split(" ").length; k++) {
-                console.log(shuffle(extras.split(" ")[k]));
                 var btn = document.createElement("BUTTON");        // Créer un élément <button>
                 var t = document.createTextNode(extras.split(" ")[k]);        // Créer un noeud textuel
                 btn.appendChild(t);
                 btn.className = "btn";                                // Ajouter le texte au bouton
                 btn.type = "button";
-                shuffle(btn);
                 document.getElementById("buttons").appendChild(btn);
             }
+
         }
         i++;
     }
 }
 
+//console.log(answer);
 /**
  * allows you to move the clicked button in or 
  * out of the solution to remove it from the solution.
  */
-
 function moveToAnswer() {
     $(".btn").click(function () {
         console.log($(this).text());
@@ -112,38 +112,103 @@ function moveToAnswer() {
     });
 }
 
+let nom = new
+    URL(location.href).searchParams.get("quizId");
+let i = 0;
+//let answer;
+while (i < data.length) {
+    if (nom == data[i].id) {
+        let k = 0;
+        let j = 0;
+        answer = data[i].questions[j].answer;
+        extras = data[i].questions[k].extras;
+    }
+    i++;
+}
+
+/*function shuffle(array) {
+    /*let nom = new
+    URL(location.href).searchParams.get("quizId");
+    let i = 0;
+   // let answer;
+    while (i < data.length) {
+        if (nom == data[i].id) {
+            let k = 0;
+            let j = 0;
+            answer = data[i].questions[j].answer;
+            extras = data[i].questions[k].extras;*/
+
+// question = data[i].questions[0].answer;
+
+
+/* let counter = array.length;
+ while (counter > 0) {
+     let index = Math.floor(Math.random() * counter);
+     counter--;
+     // Swap positions counter and index in the array.
+     [array[counter], array[index]] = [array[index], array[counter]];
+ }
+}
+// i++;
+// }
+//}
+shuffle(answer);*/
+
+
 /**
  * Shuffles the given array.
  * @param {*} array 
  */
 function shuffle(array) {
+    let nom = new
+        URL(location.href).searchParams.get("quizId");
     let i = 0;
+    let answer;
     while (i < data.length) {
-        //array = data[0].questions[i].answer.split(" ");
-        let counter = array.length;
-        while (counter > 0) {
-            let index = Math.floor(Math.random() * counter);
-            counter--;
-            // Swap positions counter and index in the array.
-            [array[counter], array[index]] = [array[index], array[counter]];
+        if (nom == data[i].id /*&& description == data[i].description*/) {
+
+            //  let question = data[i].questions[0].answer;
+            //array = question.split(" ");
+
+            let counter = array.length;
+            while (counter > 0) {
+                let index = Math.floor(Math.random() * counter);
+                counter--;
+                // Swap positions counter and index in the array.
+                [array[counter], array[index]] = [array[index], array[counter]];
+            }
         }
         i++;
     }
 }
 
+//shuffle(answer);
+//shuffle(extras);
+
+
 /**
  * Cheks that the given answer is correct.
  */
 function verification() {
-    let answer;
+    /// let answer;
     let nom = new
         URL(location.href).searchParams.get("quizId");
     let i = 0;
     while (i < data.length) {
         if (nom == data[i].id) {
-            answer = data[i].questions[0].answer;
+            // answer = data[i].questions[0].answer;
             var elm = $("#verification");
             var phrase;
+            $("#button").click(function () {
+                $("#button").hide();
+                $(".btr").off("click");
+                $(".btn").off("click");
+                elm.html(answer);
+                document.getElementById('verification').style.border = 'solid';
+                document.getElementById('verification').style.marginTop = '0px';
+                document.getElementById('verification').style.backgroundColor = 'red'
+                document.getElementById('verification').style.width = "1200px"
+            });
             $(".btn").click(function () {
                 var reponse = $(".btn").text();
                 console.log(reponse);
@@ -151,36 +216,108 @@ function verification() {
                 console.log(phrase);
                 var concatenatedAnswer = answer.replace(/ /g, "");
                 console.log(concatenatedAnswer);
-                if (phrase == concatenatedAnswer) {
+                if (concatenatedAnswer == phrase) {
                     $("#button").click(function () {
                         $("#button").hide();
                         $(".btr").off("click");
                         $(".btn").off("click");
-                        elm.html("Bravo");
+                        elm.html("Bravo!!!!!!!!!!!!!!!!");
                         document.getElementById('verification').style.border = 'solid';
                         document.getElementById('verification').style.marginTop = '0px';
                         document.getElementById('verification').style.backgroundColor = 'green'
                         document.getElementById('verification').style.width = "1200px"
                     });
-                } else {
-                    $("#button").click(function () {
-                        $("#button").hide();
-                        $(".btr").off("click");
-                        $(".btn").off("click");
-                        elm.html(answer);
-                        document.getElementById('verification').style.border = 'solid';
-                        document.getElementById('verification').style.marginTop = '0px';
-                        document.getElementById('verification').style.backgroundColor = 'red'
-                        document.getElementById('verification').style.width = "1200px"
-                    });
+
                 }
+
             });
+
         }
         i++;
     }
+
 }
 
+/**
+ * moves on to the next question.
+ */
+/*function nextQuestion(){
+   
+    let nom = new
+    URL(location.href).searchParams.get("quizId");
+let i = 0;
+    while (i < data.length) {
+        if (nom == data[i].id /*&& description == data[i].description*///) {
 
+/* let question = data[i].questions[0].question;
+ console.log(data[i].questions.length)
+ $("#question").text(question);*/
+
+
+
+/*  $("#nextQuestion").click(function(){
+      $("#number").text("Question " + nbQuest++);
+      $("#button").show();
+      document.getElementById('verification').style.visibility = 'hidden';
+      question = data[i].questions[nbQuest-1].question;
+     // console.log(data[i].questions.length)
+      $("#question").text(question);
+  
+      //askQuestion();
+  
+  });
+}
+  i++;
+}      
+}*/
+
+
+function nextQuestion() {
+    $("#nextQuestion").click(function () {
+        let nom = new
+            URL(location.href).searchParams.get("quizId");
+        let i = 0;
+        while (i < data.length) {
+            if (nom == data[i].id /*&& description == data[i].description*/) {
+                $("#button").show();
+                document.getElementById('verification').style.visibility = 'hidden';
+                question = data[i].questions[nbQuest - 1].question;
+                // console.log(data[i].questions.length)
+                $("#question").text(question);
+                $("#number").text("Question " + nbQuest++);
+                $(".btr").hide();
+                $(".btn").hide();
+                let k = 0;
+                let j = 0;
+                k++;
+                j++;
+                answer = data[i].questions[j].answer;
+                extras = data[i].questions[k].extras;
+                for (j; j < answer.split(" ").length; j++) {
+                    var btn = document.createElement("BUTTON");        // Créer un élément <button>
+                    var t = document.createTextNode(answer.split(" ")[j]);        // Créer un noeud textuel
+                    btn.appendChild(t);
+                    btn.className = "btn";                             // Ajouter le texte au bouton
+                    btn.type = "button";
+                    document.getElementById("buttons").appendChild(btn);
+
+                }
+                for (k; k < extras.split(" ").length; k++) {
+                    var btn = document.createElement("BUTTON");        // Créer un élément <button>
+                    var t = document.createTextNode(extras.split(" ")[k]);        // Créer un noeud textuel
+                    btn.appendChild(t);
+                    btn.className = "btn";                                // Ajouter le texte au bouton
+                    btn.type = "button";
+                    document.getElementById("buttons").appendChild(btn);
+
+                }
+                moveToAnswer();
+                verification();
+            }
+            i++;
+        }
+    });
+}
 
 
 
