@@ -29,12 +29,14 @@ header h1{
 header h3{
 
     margin-top: 2px;
+    
 }
 
 #Description{
 
     text-align: center;
     font-size: 45pt;
+
 }
 
 textarea{
@@ -44,6 +46,10 @@ textarea{
 main {
     
     grid-area: game;
+}
+
+#button{
+    background-color: none;
 }
 
 /*footer b{
@@ -71,6 +77,18 @@ border: solid;
 
 }
 
+/*#nextQuestion{
+    visibility: hidden;
+}/*
+
+/*#verification{
+   visibility: hidden;;
+    overflow:auto; widows: 400px; height:40px ; width: 1200px;
+
+border: solid;
+background-color: yellowgreen;
+ margin-top: 0px;
+}*/
 
 
 
