@@ -98,33 +98,18 @@ function btn() {
 
 function moveToAnswer() {
     $(".btn").click(function () {
-        // $("div.zone").on('click', '.btr', function(){
         console.log($(this).text());
-
-        // $(this).off('click');
         $(this).appendTo("#zone");
         $(this).removeClass("btn");
         $(this).addClass("btr");
         $(this).off('click');
-        // $(this).appendTo("#zone");
         $(".btr").click(function () {
             $(this).off('click');
-            // $(this).appendTo("#buttons");
             $(this).removeClass("btr");
             $(this).addClass("btn");
             $(this).appendTo("#buttons");
         })
-        // $(this).removeClass("btr");
-
-        // $(this).removeClass("btn");
-        // $(this).addClass("btr");
     });
-
-    /*$("div.buttons").on("click", ".btr", function(){
-        $(this).appendTo("#buttons");
-        $(this).removeClass("btr");
-        $(this).addClass("btn");
-    })*/
 }
 
 /**
