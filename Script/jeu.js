@@ -77,6 +77,7 @@ function btn() {
                 btn.type = "button";
                 document.getElementById("buttons").appendChild(btn);
             }
+
             for (k; k < extras.split(" ").length; k++) {
                 var btn = document.createElement("BUTTON");        // Créer un élément <button>
                 var t = document.createTextNode(extras.split(" ")[k]);        // Créer un noeud textuel
@@ -185,7 +186,6 @@ function shuffle(array) {
 //shuffle(answer);
 //shuffle(extras);
 
-
 /**
  * Cheks that the given answer is correct.
  */
@@ -238,61 +238,30 @@ function verification() {
 
 }
 
+
 /**
  * moves on to the next question.
  */
-/*function nextQuestion(){
-   
-    let nom = new
-    URL(location.href).searchParams.get("quizId");
-let i = 0;
-    while (i < data.length) {
-        if (nom == data[i].id /*&& description == data[i].description*///) {
-
-/* let question = data[i].questions[0].question;
- console.log(data[i].questions.length)
- $("#question").text(question);*/
-
-
-
-/*  $("#nextQuestion").click(function(){
-      $("#number").text("Question " + nbQuest++);
-      $("#button").show();
-      document.getElementById('verification').style.visibility = 'hidden';
-      question = data[i].questions[nbQuest-1].question;
-     // console.log(data[i].questions.length)
-      $("#question").text(question);
-  
-      //askQuestion();
-  
-  });
-}
-  i++;
-}      
-}*/
-
-
 function nextQuestion() {
     $("#nextQuestion").click(function () {
         let nom = new
             URL(location.href).searchParams.get("quizId");
         let i = 0;
         while (i < data.length) {
+            console.log(i);
             if (nom == data[i].id /*&& description == data[i].description*/) {
                 $("#button").show();
-                document.getElementById('verification').style.visibility = 'hidden';
+                nbQuest++;
                 question = data[i].questions[nbQuest - 1].question;
-                // console.log(data[i].questions.length)
                 $("#question").text(question);
-                $("#number").text("Question " + nbQuest++);
+                $("#number").text("Question " + nbQuest);
+                answer = data[i].questions[nbQuest - 1].answer;
+                extras = data[i].questions[nbQuest - 1].extras;
                 $(".btr").hide();
                 $(".btn").hide();
                 let k = 0;
                 let j = 0;
-                k++;
-                j++;
-                answer = data[i].questions[j].answer;
-                extras = data[i].questions[k].extras;
+                let n = 0;
                 for (j; j < answer.split(" ").length; j++) {
                     var btn = document.createElement("BUTTON");        // Créer un élément <button>
                     var t = document.createTextNode(answer.split(" ")[j]);        // Créer un noeud textuel
@@ -300,8 +269,8 @@ function nextQuestion() {
                     btn.className = "btn";                             // Ajouter le texte au bouton
                     btn.type = "button";
                     document.getElementById("buttons").appendChild(btn);
-
                 }
+                let m = 0;
                 for (k; k < extras.split(" ").length; k++) {
                     var btn = document.createElement("BUTTON");        // Créer un élément <button>
                     var t = document.createTextNode(extras.split(" ")[k]);        // Créer un noeud textuel
@@ -309,16 +278,30 @@ function nextQuestion() {
                     btn.className = "btn";                                // Ajouter le texte au bouton
                     btn.type = "button";
                     document.getElementById("buttons").appendChild(btn);
-
                 }
                 moveToAnswer();
                 verification();
+
             }
+
             i++;
+
         }
+
     });
+
 }
 
+/**
+ * Changes Quiz
+ */
+function changeQuiz() {
+    
+    $("#playAgain").click(function () {
+        window.open("pageDeGarde.html");
+    })
+
+}
 
 
 
