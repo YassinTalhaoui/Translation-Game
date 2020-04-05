@@ -1,6 +1,7 @@
+var nb = 0;
 var nbQuest = 1;
 /**
- * retrieves the id of the chosen quiz
+ * Retrieves the id of the chosen quiz
  * and prints  this id in the console.
  */
 function getId() {
@@ -11,7 +12,7 @@ function getId() {
 }
 
 /**
- * retrieves the description of the quiz and prints it.
+ * Retrieves the description of the quiz and prints it.
  */
 function getDescription() {
     let description;
@@ -50,7 +51,7 @@ function askQuestion() {
 }
 
 /**
- * displays the different buttons 
+ * Displays the different buttons 
  * with the different words to place.
  */
 function btn() {
@@ -91,7 +92,7 @@ function btn() {
 }
 
 /**
- * allows you to move the clicked button in or 
+ * Allows you to move the clicked button in or 
  * out of the solution to remove it from the solution.
  */
 function moveToAnswer() {
@@ -112,7 +113,7 @@ function moveToAnswer() {
 
 /**
  * Shuffle the array.
- ∗ @param {∗[]} array
+ ∗ @param {∗[]} array the array to shuffle.
  */
 function shuffle(array) {
     let counter = array.length;
@@ -164,7 +165,9 @@ function verification() {
                         document.getElementById('verification').style.marginTop = '0px';
                         document.getElementById('verification').style.backgroundColor = 'green'
                         document.getElementById('verification').style.width = "1200px"
+
                     });
+                    nb++;
 
                 }
 
@@ -177,7 +180,7 @@ function verification() {
 }
 
 /**
- * moves on to the next question.
+ * Moves on to the next question.
  */
 function nextQuestion() {
     $("#nextQuestion").click(function () {
@@ -235,7 +238,6 @@ function nextQuestion() {
  * Changes Quiz
  */
 function changeQuiz() {
-
     $("#otherQuiz").click(function () {
         window.open("pageDeGarde.html");
     })
@@ -243,3 +245,24 @@ function changeQuiz() {
         location.reload();
     })
 }
+
+/**
+ * Gives the result of the game.
+ */
+function result() {
+    $("#res").click(function () {
+        let nom = new
+            URL(location.href).searchParams.get("quizId");
+        let i = 0;
+        while (i < data.length) {
+            if (nom == data[i].id) {
+
+                $("#result").text("Vous avez reussi " + nb + " questions sur " + data[i].questions.length);
+            }
+            i++;
+
+        }
+
+    })
+}
+
